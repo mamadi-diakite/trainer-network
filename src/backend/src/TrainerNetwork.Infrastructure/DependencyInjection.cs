@@ -2,6 +2,7 @@ using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using TrainerNetwork.Application.Content;
 using TrainerNetwork.Application.Security;
 using TrainerNetwork.Application.Users;
 using TrainerNetwork.Infrastructure.Persistence;
@@ -20,6 +21,7 @@ public static class DependencyInjection
         services.TryAddSingleton(TimeProvider.System);
         services.AddSingleton<IPasswordHasher, IdentityPasswordHasher>();
         services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IContentQueries, ContentQueries>();
         services.AddScoped<DemoDataSeeder>();
 
         return services;
