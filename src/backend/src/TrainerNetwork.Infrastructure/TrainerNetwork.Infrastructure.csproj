@@ -1,0 +1,7 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\TrainerNetwork.Application\TrainerNetwork.Application.csproj" />
+  </ItemGroup>
+
+</Project>

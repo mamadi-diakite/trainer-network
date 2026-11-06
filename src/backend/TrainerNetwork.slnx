@@ -1,0 +1,13 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/TrainerNetwork.Api/TrainerNetwork.Api.csproj" />
+    <Project Path="src/TrainerNetwork.Application.Contracts/TrainerNetwork.Application.Contracts.csproj" />
+    <Project Path="src/TrainerNetwork.Application/TrainerNetwork.Application.csproj" />
+    <Project Path="src/TrainerNetwork.Domain/TrainerNetwork.Domain.csproj" />
+    <Project Path="src/TrainerNetwork.Infrastructure/TrainerNetwork.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/TrainerNetwork.Api.IntegrationTests/TrainerNetwork.Api.IntegrationTests.csproj" />
+    <Project Path="tests/TrainerNetwork.Application.Tests/TrainerNetwork.Application.Tests.csproj" />
+  </Folder>
+</Solution>
