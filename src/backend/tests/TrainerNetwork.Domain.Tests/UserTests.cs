@@ -70,6 +70,27 @@ public sealed class UserTests
     }
 
     [Fact]
+    public void Change_password_replaces_the_hash()
+    {
+        var user = new User("claire@example.com", "Claire", "old-hash", UserRole.Trainer, TestDates.Now);
+
+        user.ChangePassword("new-hash");
+
+        Assert.Equal("new-hash", user.PasswordHash);
+    }
+
+    [Fact]
+    public void Change_password_rejects_a_blank_hash()
+    {
+        var user = new User("claire@example.com", "Claire", "old-hash", UserRole.Trainer, TestDates.Now);
+
+        var error = Assert.Throws<ArgumentException>(() => user.ChangePassword(" "));
+
+        Assert.Equal("passwordHash", error.ParamName);
+        Assert.Equal("old-hash", user.PasswordHash);
+    }
+
+    [Fact]
     public void Rejects_non_utc_creation_date()
     {
         var local = DateTime.SpecifyKind(TestDates.Now, DateTimeKind.Local);

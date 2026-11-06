@@ -32,6 +32,9 @@ public sealed class User
 
     public DateTime CreatedAtUtc { get; private set; }
 
+    public void ChangePassword(string passwordHash) =>
+        PasswordHash = Guard.Required(passwordHash, nameof(passwordHash), PasswordHashMaxLength);
+
     private static string NormalizeEmail(string? email)
     {
         var value = Guard.Required(email, nameof(email), EmailMaxLength).ToLowerInvariant();
