@@ -14,6 +14,11 @@ if (app.Configuration.GetValue<bool>("Database:ApplyMigrationsOnStartup"))
     await app.Services.ApplyMigrationsAsync();
 }
 
+if (app.Environment.IsDevelopment() && app.Configuration.GetValue<bool>("Database:SeedDemoData"))
+{
+    await app.Services.SeedDemoDataAsync();
+}
+
 app.MapControllers();
 
 await app.RunAsync();
