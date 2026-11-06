@@ -1,0 +1,87 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "cli": {
+    "packageManager": "npm"
+  },
+  "newProjectRoot": "projects",
+  "projects": {
+    "trainer-network-app": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/apps/trainer-network-app",
+      "sourceRoot": "projects/apps/trainer-network-app/src",
+      "prefix": "tn",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "options": {
+            "browser": "projects/apps/trainer-network-app/src/main.ts",
+            "tsConfig": "projects/apps/trainer-network-app/tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/apps/trainer-network-app/public"
+              }
+            ],
+            "styles": ["projects/apps/trainer-network-app/src/styles.css"]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "options": {
+            "proxyConfig": "projects/apps/trainer-network-app/proxy.conf.json"
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "trainer-network-app:build:production"
+            },
+            "development": {
+              "buildTarget": "trainer-network-app:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "include": ["**/*.spec.ts", "../../../libs/**/*.spec.ts"],
+            "coverageInclude": [
+              "projects/apps/trainer-network-app/src/app/**/*.ts",
+              "projects/libs/**/src/lib/**/*.ts"
+            ],
+            "coverageThresholds": {
+              "statements": 100,
+              "branches": 100,
+              "functions": 100,
+              "lines": 100
+            }
+          }
+        }
+      }
+    }
+  }
+}
