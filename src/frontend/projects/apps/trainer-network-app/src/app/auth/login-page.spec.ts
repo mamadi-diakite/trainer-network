@@ -69,3 +69,52 @@ describe('Login page', () => {
     expect(app.text('[data-testid="user-name"]')).toBe('Claire Martin');
   });
 });
+
+describe('Login page with a return address', () => {
+  let app: AppHarness;
+
+  beforeEach(() => (app = new AppHarness()));
+
+  afterEach(() => app.http.verify());
+
+  async function logIn(): Promise<void> {
+    await app.type('email', 'claire.martin@example.com');
+    await app.type('password', 'TestDemo123!');
+    await app.submit();
+    app.http.expectOne('/api/auth/login').flush(demoSession);
+    await app.settle();
+  }
+
+  it('goes back to the page the user wanted', async () => {
+    await app.open('/account/password');
+    expect(app.router.url).toBe('/login?returnUrl=%2Faccount%2Fpassword');
+
+    await logIn();
+
+    expect(app.router.url).toBe('/account/password');
+  });
+
+  it('goes home when the return address leaves the app', async () => {
+    await app.open('/login?returnUrl=%2F%2Fevil.example.com');
+
+    await logIn();
+    app.http.expectOne('/api/catalog').flush([]);
+
+    expect(app.router.url).toBe('/');
+  });
+
+  it('explains that the session has expired', async () => {
+    await app.open('/login?expired=true');
+
+    expect(app.text('[role="status"]')).toBe('Your session has expired. Please log in again.');
+  });
+
+  it('is not shown to signed-in users', async () => {
+    app.signIn();
+
+    await app.open('/login');
+    app.http.expectOne('/api/catalog').flush([]);
+
+    expect(app.router.url).toBe('/');
+  });
+});

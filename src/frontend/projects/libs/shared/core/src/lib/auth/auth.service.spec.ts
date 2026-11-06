@@ -61,4 +61,24 @@ describe('AuthService', () => {
     await expect(user).rejects.toBeTruthy();
     expect(session.token()).toBeNull();
   });
+
+  it('changes the password', async () => {
+    const body = { currentPassword: 'a', newPassword: 'b', confirmPassword: 'b' };
+    const done = firstValueFrom(service.changePassword(body), { defaultValue: undefined });
+
+    const request = http.expectOne('/api/auth/change-password');
+    expect(request.request.method).toBe('POST');
+    expect(request.request.body).toEqual(body);
+    request.flush(null, { status: 204, statusText: 'No Content' });
+
+    await expect(done).resolves.toBeNull();
+  });
+
+  it('logs out by clearing the session', () => {
+    session.start(response);
+
+    service.logout();
+
+    expect(session.token()).toBeNull();
+  });
 });

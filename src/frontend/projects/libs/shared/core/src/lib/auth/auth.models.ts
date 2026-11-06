@@ -10,6 +10,12 @@ export interface LoginRequest {
   readonly password: string;
 }
 
+export interface ChangePasswordRequest {
+  readonly currentPassword: string;
+  readonly newPassword: string;
+  readonly confirmPassword: string;
+}
+
 export interface LoginResponse {
   readonly accessToken: string;
   readonly expiresAtUtc: string;

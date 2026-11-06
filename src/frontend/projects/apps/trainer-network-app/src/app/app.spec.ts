@@ -23,13 +23,19 @@ describe('App', () => {
     expect(credit?.getAttribute('href')).toBe('https://storyset.com/people');
   });
 
-  it('shows the signed-in user instead of the login link', async () => {
+  it('shows the signed-in user and logs out to the login page', async () => {
     app.signIn();
 
     await app.openHome();
 
     expect(app.text('[data-testid="user-name"]')).toBe('Claire Martin');
-    expect(app.texts('header nav a')).toEqual([]);
+    expect(app.texts('header nav a')).toEqual(['Change password']);
+
+    app.button('header nav button').click();
+    await app.settle();
+
+    expect(app.router.url).toBe('/login');
+    expect(app.texts('header nav a')).toEqual(['Log in']);
   });
 
   it('sends unknown addresses back home', async () => {

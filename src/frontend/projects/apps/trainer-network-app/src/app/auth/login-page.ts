@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { AuthService, FormSubmission } from '@trainer-network/shared/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService, FormSubmission, safeReturnUrl } from '@trainer-network/shared/core';
 import { FieldErrors } from '@trainer-network/shared/ui';
 
 /** Form on the left, illustration on the right; the illustration goes under the form on small screens. */
@@ -18,6 +18,9 @@ import { FieldErrors } from '@trainer-network/shared/ui';
           <p class="text-slate-600">Log in to read and improve the pages trainers share.</p>
         </div>
 
+        @if (expired) {
+          <p class="alert-info" role="status">Your session has expired. Please log in again.</p>
+        }
         @if (submission.errors().form; as message) {
           <p class="alert-error" role="alert">{{ message }}</p>
         }
@@ -66,7 +69,9 @@ import { FieldErrors } from '@trainer-network/shared/ui';
 export class LoginPage {
   private readonly auth = inject(AuthService);
   private readonly router = inject(Router);
+  private readonly query = inject(ActivatedRoute).snapshot.queryParamMap;
 
+  protected readonly expired = this.query.has('expired');
   protected readonly form = inject(NonNullableFormBuilder).group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required],
@@ -79,7 +84,7 @@ export class LoginPage {
   protected logIn(): void {
     this.submission.submit(
       () => this.auth.login(this.form.getRawValue()),
-      () => void this.router.navigateByUrl('/'),
+      () => void this.router.navigateByUrl(safeReturnUrl(this.query.get('returnUrl'))),
     );
   }
 }
