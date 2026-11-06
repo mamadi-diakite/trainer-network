@@ -1,10 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { RouterLink } from '@angular/router';
 import { CatalogService } from '@trainer-network/shared/core';
 
 /** Introduction and the public outline of professions, topics, pages and sections. */
 @Component({
   selector: 'tn-home-page',
+  imports: [RouterLink],
   template: `
     <div class="space-y-10">
       <section class="max-w-2xl space-y-4">
@@ -28,14 +30,20 @@ import { CatalogService } from '@trainer-network/shared/core';
                 <h3 class="text-lg font-semibold">{{ profession.name }}</h3>
                 @for (topic of profession.topics; track topic.id) {
                   <div class="mt-4">
-                    <h4 class="font-medium text-teal-700">{{ topic.name }}</h4>
+                    <h4>
+                      <a [routerLink]="['/topics', topic.slug]" class="link">{{ topic.name }}</a>
+                    </h4>
                     @if (topic.description) {
                       <p class="text-sm text-slate-600">{{ topic.description }}</p>
                     }
                     <ul class="mt-2 space-y-1 text-sm">
                       @for (page of topic.pages; track page.id) {
                         <li>
-                          <span class="font-medium">{{ page.title }}</span>
+                          <a
+                            [routerLink]="['/pages', page.id]"
+                            class="font-medium hover:underline"
+                            >{{ page.title }}</a
+                          >
                           @if (page.sectionTitles.length > 0) {
                             <span class="text-slate-500" data-testid="section-titles">
                               · {{ page.sectionTitles.join(', ') }}</span

@@ -46,10 +46,11 @@ describe('Home page', () => {
     expect(app.texts('article h3')).toEqual(['Language trainers']);
     expect(app.texts('article h4')).toEqual(['Speaking practice', 'Grammar']);
     expect(app.texts('article h4 + p')).toEqual(['Getting adults to speak from day one.']);
-    expect(app.texts('article li > span:first-child')).toEqual([
-      'Role plays that work',
-      'Warm-ups',
-    ]);
+    expect(app.texts('article li > a')).toEqual(['Role plays that work', 'Warm-ups']);
+    expect(app.element.querySelector('article li > a')?.getAttribute('href')).toBe('/pages/page-1');
+    expect(app.element.querySelector('article h4 a')?.getAttribute('href')).toBe(
+      '/topics/speaking-practice',
+    );
     expect(app.texts('[data-testid="section-titles"]')).toEqual(['· Set-up, Debrief']);
     expect(app.texts('article li.text-slate-500')).toEqual(['No pages yet.']);
   });

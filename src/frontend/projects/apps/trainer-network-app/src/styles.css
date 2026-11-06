@@ -25,6 +25,30 @@
     @apply rounded-md bg-rose-50 px-4 py-3 text-sm text-rose-700;
   }
 
+  .markdown {
+    @apply space-y-3 leading-relaxed text-slate-700;
+  }
+
+  .markdown ul {
+    @apply list-disc space-y-1 pl-6;
+  }
+
+  .markdown ol {
+    @apply list-decimal space-y-1 pl-6;
+  }
+
+  .markdown a {
+    @apply text-teal-700 underline;
+  }
+
+  .markdown code {
+    @apply rounded bg-slate-100 px-1 py-0.5 text-sm;
+  }
+
+  .markdown blockquote {
+    @apply border-l-4 border-teal-200 pl-4 italic;
+  }
+
   .alert-info {
     @apply rounded-md bg-teal-50 px-4 py-3 text-sm text-teal-800;
   }
