@@ -9,5 +9,7 @@
   <Folder Name="/tests/">
     <Project Path="tests/TrainerNetwork.Api.IntegrationTests/TrainerNetwork.Api.IntegrationTests.csproj" />
     <Project Path="tests/TrainerNetwork.Application.Tests/TrainerNetwork.Application.Tests.csproj" />
+    <Project Path="tests/TrainerNetwork.Domain.Tests/TrainerNetwork.Domain.Tests.csproj" />
+    <Project Path="tests/TrainerNetwork.Infrastructure.Tests/TrainerNetwork.Infrastructure.Tests.csproj" />
   </Folder>
 </Solution>
