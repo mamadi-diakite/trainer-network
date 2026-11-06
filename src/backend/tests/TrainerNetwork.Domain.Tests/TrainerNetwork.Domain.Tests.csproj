@@ -12,10 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Using Include="Xunit" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\src\TrainerNetwork.Domain\TrainerNetwork.Domain.csproj" />
   </ItemGroup>
 

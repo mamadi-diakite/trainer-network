@@ -1,5 +1,3 @@
-using TrainerNetwork.Domain;
-
 namespace TrainerNetwork.Infrastructure.Seeding;
 
 internal sealed record DemoAccount(string Email, string DisplayName, UserRole Role);

@@ -1,14 +1,3 @@
-using Microsoft.Data.Sqlite;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-using TrainerNetwork.Application.Content;
-using TrainerNetwork.Application.Security;
-using TrainerNetwork.Application.Users;
-using TrainerNetwork.Infrastructure.Persistence;
-using TrainerNetwork.Infrastructure.Security;
-using TrainerNetwork.Infrastructure.Seeding;
-
 namespace TrainerNetwork.Infrastructure;
 
 public static class DependencyInjection

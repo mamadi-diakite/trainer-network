@@ -1,7 +1,3 @@
-using TrainerNetwork.Application.Auth;
-using TrainerNetwork.Application.Contracts.Auth;
-using TrainerNetwork.Domain;
-
 namespace TrainerNetwork.Application.Tests;
 
 public sealed class AuthServiceTests

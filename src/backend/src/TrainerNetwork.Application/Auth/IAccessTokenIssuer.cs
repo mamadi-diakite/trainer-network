@@ -1,5 +1,3 @@
-using TrainerNetwork.Domain;
-
 namespace TrainerNetwork.Application.Auth;
 
 public interface IAccessTokenIssuer

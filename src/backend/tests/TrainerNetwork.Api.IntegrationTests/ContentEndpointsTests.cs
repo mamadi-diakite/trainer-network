@@ -1,9 +1,3 @@
-using System.Net;
-using System.Net.Http.Headers;
-using System.Net.Http.Json;
-using TrainerNetwork.Application.Contracts.Auth;
-using TrainerNetwork.Application.Contracts.Content;
-
 namespace TrainerNetwork.Api.IntegrationTests;
 
 public sealed class ContentEndpointsTests(DemoDataApiFactory factory) : IClassFixture<DemoDataApiFactory>

@@ -1,5 +1,3 @@
-using TrainerNetwork.Application.Auth;
-
 namespace TrainerNetwork.Application.Tests;
 
 public sealed class PasswordPolicyTests

@@ -1,8 +1,3 @@
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using TrainerNetwork.Application.Content;
-using TrainerNetwork.Application.Contracts.Content;
-
 namespace TrainerNetwork.Api.Controllers;
 
 /// <summary>Public outline shown on the login page, so visitors see what the network covers.</summary>

@@ -1,0 +1,64 @@
+import { provideHttpClient } from '@angular/common/http';
+import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
+import { TestBed } from '@angular/core/testing';
+import { provideAppEnvironment } from '@trainer-network/shared/environment';
+import { firstValueFrom } from 'rxjs';
+import { LoginResponse } from './auth.models';
+import { AuthService } from './auth.service';
+import { SessionStore } from './session.store';
+
+const response: LoginResponse = {
+  accessToken: 'token-1',
+  expiresAtUtc: '2999-01-01T00:00:00Z',
+  user: {
+    id: 'user-1',
+    email: 'claire.martin@example.com',
+    displayName: 'Claire Martin',
+    role: 'Trainer',
+  },
+};
+
+describe('AuthService', () => {
+  let service: AuthService;
+  let session: SessionStore;
+  let http: HttpTestingController;
+
+  beforeEach(() => {
+    localStorage.clear();
+    TestBed.configureTestingModule({
+      providers: [
+        provideHttpClient(),
+        provideHttpClientTesting(),
+        provideAppEnvironment({ apiBaseUrl: '/api' }),
+      ],
+    });
+    service = TestBed.inject(AuthService);
+    session = TestBed.inject(SessionStore);
+    http = TestBed.inject(HttpTestingController);
+  });
+
+  afterEach(() => http.verify());
+
+  it('logs in and starts the session', async () => {
+    const user = firstValueFrom(
+      service.login({ email: 'claire.martin@example.com', password: 'x' }),
+    );
+
+    const request = http.expectOne('/api/auth/login');
+    expect(request.request.method).toBe('POST');
+    expect(request.request.body).toEqual({ email: 'claire.martin@example.com', password: 'x' });
+    request.flush(response);
+
+    expect(await user).toEqual(response.user);
+    expect(session.token()).toBe('token-1');
+  });
+
+  it('does not start a session when login fails', async () => {
+    const user = firstValueFrom(service.login({ email: 'claire@example.com', password: 'x' }));
+
+    http.expectOne('/api/auth/login').flush(null, { status: 401, statusText: 'Unauthorized' });
+
+    await expect(user).rejects.toBeTruthy();
+    expect(session.token()).toBeNull();
+  });
+});

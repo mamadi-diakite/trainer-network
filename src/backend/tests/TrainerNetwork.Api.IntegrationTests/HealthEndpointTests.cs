@@ -1,6 +1,3 @@
-using System.Net;
-using System.Net.Http.Json;
-
 namespace TrainerNetwork.Api.IntegrationTests;
 
 public sealed class HealthEndpointTests(TrainerNetworkApiFactory factory) : IClassFixture<TrainerNetworkApiFactory>

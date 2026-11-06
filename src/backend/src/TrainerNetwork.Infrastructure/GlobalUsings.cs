@@ -1,0 +1,15 @@
+global using Microsoft.AspNetCore.Identity;
+global using Microsoft.Data.Sqlite;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.EntityFrameworkCore.Metadata.Builders;
+global using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.Extensions.DependencyInjection.Extensions;
+global using TrainerNetwork.Application.Content;
+global using TrainerNetwork.Application.Contracts.Content;
+global using TrainerNetwork.Application.Security;
+global using TrainerNetwork.Application.Users;
+global using TrainerNetwork.Domain;
+global using TrainerNetwork.Infrastructure.Persistence;
+global using TrainerNetwork.Infrastructure.Security;
+global using TrainerNetwork.Infrastructure.Seeding;

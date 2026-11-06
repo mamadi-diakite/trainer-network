@@ -1,8 +1,3 @@
-using TrainerNetwork.Application.Contracts.Auth;
-using TrainerNetwork.Application.Security;
-using TrainerNetwork.Application.Users;
-using TrainerNetwork.Domain;
-
 namespace TrainerNetwork.Application.Auth;
 
 public sealed class AuthService(IUserRepository users, IPasswordHasher passwordHasher, IAccessTokenIssuer tokenIssuer)

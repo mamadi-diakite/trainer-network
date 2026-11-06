@@ -1,7 +1,3 @@
-using Microsoft.EntityFrameworkCore;
-using TrainerNetwork.Application.Users;
-using TrainerNetwork.Domain;
-
 namespace TrainerNetwork.Infrastructure.Persistence;
 
 public sealed class UserRepository(TrainerNetworkDbContext db) : IUserRepository

@@ -1,6 +1,3 @@
-using Microsoft.EntityFrameworkCore;
-using TrainerNetwork.Domain;
-
 namespace TrainerNetwork.Infrastructure.Persistence;
 
 public sealed class TrainerNetworkDbContext(DbContextOptions<TrainerNetworkDbContext> options) : DbContext(options)

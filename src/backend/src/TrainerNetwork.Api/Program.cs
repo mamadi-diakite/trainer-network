@@ -1,9 +1,3 @@
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using TrainerNetwork.Api.Auth;
-using TrainerNetwork.Application;
-using TrainerNetwork.Application.Auth;
-using TrainerNetwork.Infrastructure;
-
 var builder = WebApplication.CreateBuilder(args);
 
 var jwtSettings = JwtSettings.FromConfiguration(builder.Configuration, builder.Environment);

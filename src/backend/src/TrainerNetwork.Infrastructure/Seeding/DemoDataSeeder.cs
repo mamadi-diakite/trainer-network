@@ -1,8 +1,3 @@
-using Microsoft.EntityFrameworkCore;
-using TrainerNetwork.Application.Security;
-using TrainerNetwork.Domain;
-using TrainerNetwork.Infrastructure.Persistence;
-
 namespace TrainerNetwork.Infrastructure.Seeding;
 
 public sealed class DemoDataSeeder(TrainerNetworkDbContext db, IPasswordHasher passwordHasher, TimeProvider timeProvider)

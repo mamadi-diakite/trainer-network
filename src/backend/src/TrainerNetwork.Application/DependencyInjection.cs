@@ -1,6 +1,3 @@
-using Microsoft.Extensions.DependencyInjection;
-using TrainerNetwork.Application.Auth;
-
 namespace TrainerNetwork.Application;
 
 public static class DependencyInjection

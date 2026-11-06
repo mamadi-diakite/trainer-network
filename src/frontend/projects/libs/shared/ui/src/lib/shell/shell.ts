@@ -14,15 +14,21 @@ const statusDots: Record<ApiStatus, string> = {
   offline: 'bg-rose-500',
 };
 
-/** Page frame: header with the app name, the routed content, and a footer with the API status. */
+/**
+ * Page frame: header with the app name and the `shellNav` content, the routed content, and a
+ * footer with the `shellCredit` content and the API status.
+ */
 @Component({
   selector: 'tn-shell',
   imports: [RouterLink],
   template: `
     <div class="flex min-h-screen flex-col bg-slate-50 text-slate-900">
       <header class="border-b border-slate-200 bg-white">
-        <div class="mx-auto flex max-w-5xl items-center px-4 py-3">
+        <div class="mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-3">
           <a routerLink="/" class="text-lg font-semibold tracking-tight">{{ appName() }}</a>
+          <nav class="flex items-center gap-4 text-sm" aria-label="Account">
+            <ng-content select="[shellNav]" />
+          </nav>
         </div>
       </header>
 
@@ -32,10 +38,13 @@ const statusDots: Record<ApiStatus, string> = {
 
       <footer class="border-t border-slate-200 bg-white">
         <div
-          class="mx-auto flex max-w-5xl items-center justify-end gap-2 px-4 py-3 text-sm text-slate-600"
+          class="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-2 px-4 py-3 text-sm text-slate-600"
         >
-          <span class="size-2 rounded-full" [class]="statusDot()" aria-hidden="true"></span>
-          <span data-testid="api-status">API {{ statusLabel() }}</span>
+          <div><ng-content select="[shellCredit]" /></div>
+          <div class="flex items-center gap-2">
+            <span class="size-2 rounded-full" [class]="statusDot()" aria-hidden="true"></span>
+            <span data-testid="api-status">API {{ statusLabel() }}</span>
+          </div>
         </div>
       </footer>
     </div>

@@ -1,5 +1,3 @@
-using TrainerNetwork.Application.Contracts.Content;
-
 namespace TrainerNetwork.Application.Content;
 
 public interface IContentQueries

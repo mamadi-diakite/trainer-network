@@ -18,6 +18,11 @@ Independent trainers and small training teams who want a shared, living knowledg
 
 Early development. Setup instructions will be added as the code lands.
 
+## Credits
+
+The login page illustration comes from Storyset:
+<a href="https://storyset.com/people">People illustrations by Storyset</a>
+
 ## License
 
 [MIT](LICENSE)

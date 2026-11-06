@@ -1,8 +1,3 @@
-using Microsoft.Extensions.DependencyInjection;
-using TrainerNetwork.Application.Auth;
-using TrainerNetwork.Application.Security;
-using TrainerNetwork.Application.Users;
-
 namespace TrainerNetwork.Application.Tests;
 
 public sealed class ApplicationDependencyInjectionTests

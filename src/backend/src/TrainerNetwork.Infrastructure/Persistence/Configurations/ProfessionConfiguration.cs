@@ -1,7 +1,3 @@
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using TrainerNetwork.Domain;
-
 namespace TrainerNetwork.Infrastructure.Persistence.Configurations;
 
 internal sealed class ProfessionConfiguration : IEntityTypeConfiguration<Profession>

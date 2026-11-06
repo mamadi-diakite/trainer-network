@@ -1,5 +1,3 @@
-using System.Security.Claims;
-
 namespace TrainerNetwork.Api.Auth;
 
 public static class JwtClaims

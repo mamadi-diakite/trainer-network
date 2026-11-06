@@ -1,8 +1,3 @@
-using System.Security.Claims;
-using Microsoft.IdentityModel.JsonWebTokens;
-using TrainerNetwork.Api.Auth;
-using TrainerNetwork.Domain;
-
 namespace TrainerNetwork.Api.IntegrationTests;
 
 public sealed class JwtAccessTokenIssuerTests

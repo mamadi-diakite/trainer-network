@@ -1,8 +1,3 @@
-using TrainerNetwork.Application.Auth;
-using TrainerNetwork.Application.Security;
-using TrainerNetwork.Application.Users;
-using TrainerNetwork.Domain;
-
 namespace TrainerNetwork.Application.Tests;
 
 internal sealed class InMemoryUserRepository : IUserRepository

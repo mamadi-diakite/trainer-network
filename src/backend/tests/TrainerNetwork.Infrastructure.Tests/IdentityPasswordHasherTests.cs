@@ -1,5 +1,3 @@
-using TrainerNetwork.Infrastructure.Security;
-
 namespace TrainerNetwork.Infrastructure.Tests;
 
 public sealed class IdentityPasswordHasherTests

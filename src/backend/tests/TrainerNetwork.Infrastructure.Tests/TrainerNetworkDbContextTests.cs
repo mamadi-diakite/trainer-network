@@ -1,6 +1,3 @@
-using Microsoft.EntityFrameworkCore;
-using TrainerNetwork.Domain;
-
 namespace TrainerNetwork.Infrastructure.Tests;
 
 public sealed class TrainerNetworkDbContextTests : IDisposable

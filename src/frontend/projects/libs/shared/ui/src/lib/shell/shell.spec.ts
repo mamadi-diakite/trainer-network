@@ -7,7 +7,9 @@ import { Shell } from './shell';
 @Component({
   imports: [Shell],
   template: `<tn-shell appName="Trainer Network" [apiStatus]="status()"
-    ><p>Page content</p></tn-shell
+    ><a shellNav href="/login">Log in</a>
+    <span shellCredit>Illustration credit</span>
+    <p>Page content</p></tn-shell
   >`,
 })
 class Host {
@@ -28,6 +30,8 @@ describe('Shell', () => {
     expect(home?.textContent?.trim()).toBe('Trainer Network');
     expect(home?.getAttribute('href')).toBe('/');
     expect(element.querySelector('main p')?.textContent).toBe('Page content');
+    expect(element.querySelector('header nav a')?.textContent).toBe('Log in');
+    expect(element.querySelector('footer [shellCredit]')?.textContent).toBe('Illustration credit');
   });
 
   it.each([

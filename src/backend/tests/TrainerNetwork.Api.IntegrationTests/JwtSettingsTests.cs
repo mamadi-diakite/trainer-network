@@ -1,8 +1,3 @@
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.FileProviders;
-using Microsoft.Extensions.Hosting;
-using TrainerNetwork.Api.Auth;
-
 namespace TrainerNetwork.Api.IntegrationTests;
 
 public sealed class JwtSettingsTests

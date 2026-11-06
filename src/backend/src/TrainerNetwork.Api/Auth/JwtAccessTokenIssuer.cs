@@ -1,8 +1,3 @@
-using Microsoft.IdentityModel.JsonWebTokens;
-using Microsoft.IdentityModel.Tokens;
-using TrainerNetwork.Application.Auth;
-using TrainerNetwork.Domain;
-
 namespace TrainerNetwork.Api.Auth;
 
 public sealed class JwtAccessTokenIssuer(JwtSettings settings, TimeProvider timeProvider) : IAccessTokenIssuer

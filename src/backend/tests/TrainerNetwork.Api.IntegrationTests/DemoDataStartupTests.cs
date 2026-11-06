@@ -1,7 +1,3 @@
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using TrainerNetwork.Infrastructure.Persistence;
-
 namespace TrainerNetwork.Api.IntegrationTests;
 
 public sealed class DemoDataStartupTests(DemoDataApiFactory factory) : IClassFixture<DemoDataApiFactory>

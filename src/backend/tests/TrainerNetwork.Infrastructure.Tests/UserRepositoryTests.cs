@@ -1,6 +1,3 @@
-using TrainerNetwork.Domain;
-using TrainerNetwork.Infrastructure.Persistence;
-
 namespace TrainerNetwork.Infrastructure.Tests;
 
 public sealed class UserRepositoryTests : IDisposable

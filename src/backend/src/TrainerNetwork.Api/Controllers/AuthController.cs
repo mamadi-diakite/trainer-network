@@ -1,9 +1,3 @@
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using TrainerNetwork.Api.Auth;
-using TrainerNetwork.Application.Auth;
-using TrainerNetwork.Application.Contracts.Auth;
-
 namespace TrainerNetwork.Api.Controllers;
 
 [ApiController]

@@ -1,6 +1,3 @@
-using Microsoft.AspNetCore.Identity;
-using TrainerNetwork.Application.Security;
-
 namespace TrainerNetwork.Infrastructure.Security;
 
 /// <summary>PBKDF2 hashing from ASP.NET Core Identity, without the rest of Identity.</summary>

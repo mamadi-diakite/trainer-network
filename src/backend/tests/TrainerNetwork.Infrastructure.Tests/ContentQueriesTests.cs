@@ -1,8 +1,3 @@
-using Microsoft.EntityFrameworkCore;
-using TrainerNetwork.Infrastructure.Persistence;
-using TrainerNetwork.Infrastructure.Security;
-using TrainerNetwork.Infrastructure.Seeding;
-
 namespace TrainerNetwork.Infrastructure.Tests;
 
 public sealed class ContentQueriesTests : IDisposable

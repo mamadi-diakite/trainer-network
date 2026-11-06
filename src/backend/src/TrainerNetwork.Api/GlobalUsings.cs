@@ -1,0 +1,15 @@
+global using System.Security.Claims;
+global using System.Security.Cryptography;
+global using Microsoft.AspNetCore.Authentication.JwtBearer;
+global using Microsoft.AspNetCore.Authorization;
+global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.IdentityModel.JsonWebTokens;
+global using Microsoft.IdentityModel.Tokens;
+global using TrainerNetwork.Api.Auth;
+global using TrainerNetwork.Application;
+global using TrainerNetwork.Application.Auth;
+global using TrainerNetwork.Application.Content;
+global using TrainerNetwork.Application.Contracts.Auth;
+global using TrainerNetwork.Application.Contracts.Content;
+global using TrainerNetwork.Domain;
+global using TrainerNetwork.Infrastructure;

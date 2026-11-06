@@ -1,8 +1,3 @@
-using Microsoft.EntityFrameworkCore;
-using TrainerNetwork.Domain;
-using TrainerNetwork.Infrastructure.Security;
-using TrainerNetwork.Infrastructure.Seeding;
-
 namespace TrainerNetwork.Infrastructure.Tests;
 
 public sealed class DemoDataSeederTests : IDisposable

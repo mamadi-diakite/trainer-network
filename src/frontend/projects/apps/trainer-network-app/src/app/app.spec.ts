@@ -1,46 +1,41 @@
-import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import { Router } from '@angular/router';
 import { APP_ENVIRONMENT } from '@trainer-network/shared/environment';
-import { App } from './app';
-import { appConfig } from './app.config';
+import { AppHarness } from '../testing/app-harness';
 
 describe('App', () => {
-  let http: HttpTestingController;
+  let app: AppHarness;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [...appConfig.providers, provideHttpClientTesting()],
-    });
-    http = TestBed.inject(HttpTestingController);
-  });
+  beforeEach(() => (app = new AppHarness()));
 
-  afterEach(() => http.verify());
+  afterEach(() => app.http.verify());
 
   it('uses the API behind the same origin', () => {
     expect(TestBed.inject(APP_ENVIRONMENT).apiBaseUrl).toBe('/api');
   });
 
-  it('shows the home page and the API status once checked', async () => {
-    const fixture = TestBed.createComponent(App);
-    await TestBed.inject(Router).navigateByUrl('/');
-    await fixture.whenStable();
-    const element = fixture.nativeElement as HTMLElement;
+  it('shows the API status, the login link and the illustration credit', async () => {
+    await app.openHome();
 
-    expect(element.querySelector('h1')?.textContent).toBe('Share what works in training');
-    expect(element.querySelector('[data-testid="api-status"]')?.textContent).toBe('API checking…');
+    expect(app.text('[data-testid="api-status"]')).toBe('API online');
+    expect(app.texts('header nav a')).toEqual(['Log in']);
+    const credit = app.element.querySelector('footer a');
+    expect(credit?.textContent).toBe('People illustrations by Storyset');
+    expect(credit?.getAttribute('href')).toBe('https://storyset.com/people');
+  });
 
-    http.expectOne('/api/health').flush({ status: 'ok' });
-    await fixture.whenStable();
+  it('shows the signed-in user instead of the login link', async () => {
+    app.signIn();
 
-    expect(element.querySelector('[data-testid="api-status"]')?.textContent).toBe('API online');
+    await app.openHome();
+
+    expect(app.text('[data-testid="user-name"]')).toBe('Claire Martin');
+    expect(app.texts('header nav a')).toEqual([]);
   });
 
   it('sends unknown addresses back home', async () => {
-    const router = TestBed.inject(Router);
+    await app.open('/does-not-exist');
+    app.http.expectOne('/api/catalog').flush([]);
 
-    await router.navigateByUrl('/does-not-exist');
-
-    expect(router.url).toBe('/');
+    expect(app.router.url).toBe('/');
   });
 });

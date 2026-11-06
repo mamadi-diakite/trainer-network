@@ -1,6 +1,3 @@
-using System.Security.Cryptography;
-using Microsoft.IdentityModel.Tokens;
-
 namespace TrainerNetwork.Api.Auth;
 
 public sealed class JwtSettings

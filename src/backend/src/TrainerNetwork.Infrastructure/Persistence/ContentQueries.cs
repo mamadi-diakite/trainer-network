@@ -1,7 +1,3 @@
-using Microsoft.EntityFrameworkCore;
-using TrainerNetwork.Application.Content;
-using TrainerNetwork.Application.Contracts.Content;
-
 namespace TrainerNetwork.Infrastructure.Persistence;
 
 public sealed class ContentQueries(TrainerNetworkDbContext db) : IContentQueries

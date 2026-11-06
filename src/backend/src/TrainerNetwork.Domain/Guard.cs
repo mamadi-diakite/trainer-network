@@ -1,5 +1,3 @@
-using System.Text.RegularExpressions;
-
 namespace TrainerNetwork.Domain;
 
 internal static partial class Guard

@@ -1,16 +1,3 @@
-using System.Net;
-using System.Net.Http.Headers;
-using System.Net.Http.Json;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.IdentityModel.JsonWebTokens;
-using Microsoft.IdentityModel.Tokens;
-using TrainerNetwork.Api.Auth;
-using TrainerNetwork.Application.Contracts.Auth;
-using TrainerNetwork.Application.Security;
-using TrainerNetwork.Domain;
-using TrainerNetwork.Infrastructure.Persistence;
-
 namespace TrainerNetwork.Api.IntegrationTests;
 
 public sealed class AuthEndpointsTests(DemoDataApiFactory factory) : IClassFixture<DemoDataApiFactory>
